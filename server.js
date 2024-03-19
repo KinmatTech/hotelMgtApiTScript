@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://mathewok20:gdjllN3gmNJ04IeQ@cluster0.nvq6w5u.mon
 
 // API Endpoints
 // ## go root url, callback func
-app.get("/", (req, res) => res.status(200).send("Hotel Management App developed by Okechukwu Ani"));
+app.get("/", (req, res) => res.status(200).send("Hotel Management App: Developed by Okechukwu Ani"));
 
 // add data to db, endpoint /tinder/card
 app.post("/rooms/hotelrooms", (req, res) => {
@@ -35,7 +35,7 @@ app.post("/rooms/hotelrooms", (req, res) => {
 // with this will be retrieving every single thing from the collection DB that we just created
 app.get("/rooms/hotelrooms", (req, res) => {
   //   function to find a card
-  Cards.find((err, data) => {
+  Rooms.find((err, data) => {
     // if there is error
     if (err) {
       // set response to 500, which means internal server error and send error back

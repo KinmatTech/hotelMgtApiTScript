@@ -5,12 +5,12 @@ const Room = mongoose.Schema({
         type: String,
         required: true
     },
-    roomType:{
+    roomTypes:{
         type: String,
         required: true
     },
-    Price:{
-        type: String,
+    price:{
+        type: Number,
         required: true
     }
 });

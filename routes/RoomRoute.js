@@ -4,7 +4,8 @@ import {
     getRoomsById,
     saveRooms,
     updateRooms,
-    deleteRooms
+    deleteRooms,
+    fetchRooms
 } from "../controllers/RoomController.js";
  
 const router = express.Router();
@@ -12,6 +13,7 @@ const router = express.Router();
 router.get('/rooms', getRooms);
 router.get('/rooms/:id', getRoomsById);
 router.post('/rooms', saveRooms);
+router.post('/rooms', fetchRooms);
 router.patch('/rooms/:id', updateRooms);
 router.delete('/rooms/:id', deleteRooms);
  
