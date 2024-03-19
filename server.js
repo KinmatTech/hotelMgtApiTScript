@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://mathewok20:gdjllN3gmNJ04IeQ@cluster0.nvq6w5u.mon
 
 // API Endpoints
 // ## go root url, callback func
-app.get("/", (req, res) => res.status(200).send("Hotel Management App!!!"));
+app.get("/", (req, res) => res.status(200).send("Hotel Management App developed by Okechukwu Ani"));
 
 // add data to db, endpoint /tinder/card
 app.post("/rooms/hotelrooms", (req, res) => {
@@ -58,5 +58,4 @@ app.use(bodyParser());
 app.use(express.json());
 app.use(RoomRoute);
  
-//app.listen(5000, ()=> console.log('Server up and running...'));
 app.listen(port, () => console.log(`Server started on localhost: ${port}`));
