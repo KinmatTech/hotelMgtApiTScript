@@ -9,6 +9,6 @@ const roomSchema = mongoose.Schema({
   price: Number,
 });
 
-// export the whole schema, define collection name, and pass in the cardSchema
+// export the whole schema, define collection name, and pass in the RoomSchema
 // in nosql Database: collection > [documents] > collection > [documents] > ....
 export default mongoose.model("rooms", roomSchema);
