@@ -9,6 +9,6 @@ const userSchema = mongoose.Schema({
     role: { type: String, enum: ["guest", "admin"], default: "guest" }
 });
 
-// export the whole schema, define collection name, and pass in the cardSchema
+// export the whole schema, define collection name, and pass in the roomSchema
 // in nosql Database: collection > [documents] > collection > [documents] > ....
 export default mongoose.model("User", userSchema);
