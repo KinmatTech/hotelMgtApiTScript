@@ -3,10 +3,12 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import RoomRoute from "./routes/RoomRoute.js";
 import UserRoute from "./routes/UserRoute.js";
+import dotenv from "dotenv"; // Import dotenv package
 
- 
+dotenv.config(); // Load environment variables from .env file
+
 const app = express();
-const port = process.env.PORT || 8001; // port app gonna listen
+const port = process.env.PORT || 8001; // Use PORT from .env file or default to 8001
 mongoose.connect('mongodb+srv://mathewok20:gdjllN3gmNJ04IeQ@cluster0.nvq6w5u.mongodb.net/',{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -49,8 +51,6 @@ app.get("/rooms/hotelrooms", (req, res) => {
   });
 });
 
-
-
 // Add User to db, endpoint /User/users
 app.post("/User/users", (req, res) => {
   // save request body into a var
@@ -84,15 +84,13 @@ app.get("/User/users", (req, res) => {
   });
 });
 
-
-
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Database Connected...'));
- 
+
 app.use(bodyParser());
 app.use(express.json());
 app.use(RoomRoute);
 app.use(UserRoute);
- 
+
 app.listen(port, () => console.log(`Server started on localhost: ${port}`));
