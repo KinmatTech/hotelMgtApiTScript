@@ -1,4 +1,12 @@
-import joi from 'joi';
+import joi, { ValidationResult } from 'joi';
+import { Request, Response, NextFunction } from 'express';
+
+// Define the shape of the user data
+interface UserData {
+    username: string;
+    password: string;
+    role: 'guest' | 'admin';
+}
 
 // Joi schema for user data validation
 const userSchema = joi.object({
@@ -8,7 +16,7 @@ const userSchema = joi.object({
 });
 
 // Middleware for validating user data
-export const validateUserData = (req, res, next) => {
+export const validateUserData = (req: Request, res: Response, next: NextFunction) => {
     const { error } = userSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     next();
