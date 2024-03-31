@@ -2,7 +2,7 @@
   "name": "hmpapi",
   "version": "1.0.0",
   "description": "Hotel App with Express, MongoDb and Body-Parser",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start:dev": "nodemon",
     "build": "tsc",
