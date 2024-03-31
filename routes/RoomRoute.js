@@ -6,9 +6,9 @@ import {
     updateRooms,
     deleteRooms,
     fetchRooms
-} from "../controllers/RoomController.ts";
-import { authenticateUser, authorizeAdmin } from "../middlewares/auth.ts";
-import { validateUserData } from "../middlewares/validate.ts";
+} from "../controllers/RoomController.js";
+import { authenticateUser, authorizeAdmin } from "../middlewares/auth.js";
+import { validateUserData } from "../middlewares/validate.js";
 
 const router = express.Router();
 

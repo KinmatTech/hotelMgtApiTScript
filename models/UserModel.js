@@ -1,10 +1,4 @@
-import mongoose, { Document } from "mongoose";
-
-interface IUser extends Document {
-    username: string;
-    password: string;
-    role: "guest" | "admin";
-}
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
@@ -12,4 +6,4 @@ const userSchema = new mongoose.Schema({
     role: { type: String, enum: ["guest", "admin"], default: "guest" }
 });
 
-export default mongoose.model<IUser>('User', userSchema);
+export default mongoose.model('User', userSchema);
