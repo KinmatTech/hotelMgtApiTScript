@@ -1,9 +1,15 @@
+import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../models/UserModel.js";
+import User from "../models/UserModel";
+
+interface UserPayload {
+    username: string;
+    role: string;
+}
 
 // Register a new user
-export const registerUser = async (req, res) => {
+export const registerUser = async (req: Request, res: Response) => {
     try {
         const { username, password, role } = req.body;
 
@@ -26,13 +32,13 @@ export const registerUser = async (req, res) => {
         await newUser.save();
 
         res.status(201).json({ message: "User registered successfully" });
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
 
 // Login user
-export const loginUser = async (req, res) => {
+export const loginUser = async (req: Request, res: Response) => {
     try {
         const { username, password } = req.body;
 
@@ -49,26 +55,26 @@ export const loginUser = async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ username: user.username, role: user.role }, process.env.JWT_SECRET);
+        const token = jwt.sign({ username: user.username, role: user.role }, process.env.JWT_SECRET!);
 
         res.status(200).json({ token });
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
 
 // Get user profile
-export const getUserProfile = async (req, res) => {
+export const getUserProfile = async (req: Request, res: Response) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
 
 // Edit user profile
-export const editUserProfile = async (req, res) => {
+export const editUserProfile = async (req: Request, res: Response) => {
     try {
         const { username, password, role } = req.body;
 
@@ -86,17 +92,17 @@ export const editUserProfile = async (req, res) => {
         );
 
         res.json(updatedUser);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
 
 // Delete user
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (req: Request, res: Response) => {
     try {
         await User.findByIdAndDelete(req.user.id);
         res.json({ message: "User deleted successfully" });
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
 };
